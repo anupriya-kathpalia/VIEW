@@ -1,4 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
+using VIEW.Views;
+using VIEW.ViewModels;
+
 
 namespace VIEW
 {
@@ -14,9 +17,19 @@ namespace VIEW
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
+            //views
+            builder.Services.AddSingleton<LoginPage>();
+            builder.Services.AddSingleton<DashboardPage>();
+            
+
+            //viewmodels
+            builder.Services.AddSingleton<LoginPageViewModel>();
+            builder.Services.AddSingleton<DashboardPageViewModel>();
+            
+
 
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();

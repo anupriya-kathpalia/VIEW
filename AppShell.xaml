@@ -5,6 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:views="clr-namespace:VIEW.Views"
     xmlns:local="clr-namespace:VIEW"
+    xmlns:models="clr-namespace:VIEW.Models"
     Shell.FlyoutBehavior="Disabled">
 
     <ShellContent 
@@ -17,7 +18,27 @@
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
 
-   
+    <FlyoutItem  Route="DashboardPage" FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent
+         Title="Dashboard"  Icon="{x:Static models:Icons.Dashboard }"
+         ContentTemplate="{DataTemplate views:DashboardPage}"/>
 
+        <ShellContent
+         Title="People" Icon="{x:Static models:Icons.People }"
+         ContentTemplate="{DataTemplate views:DashboardPage}"/>
+
+        <ShellContent
+         Title="Contact Us" Icon="{x:Static models:Icons.ContactUs }"
+         ContentTemplate="{DataTemplate views:DashboardPage}"/>
+
+        <ShellContent
+         Title="About Us" Icon="{x:Static models:Icons.AboutUs}"
+         ContentTemplate="{DataTemplate views:DashboardPage}"/>
+    </FlyoutItem>
+    <Shell.FlyoutFooter>
+        <StackLayout Padding="20">
+            <Button Text="Sign Out" BackgroundColor="Black" Command="{Binding SignOutCommand}" />
+        </StackLayout>
+    </Shell.FlyoutFooter>
 
 </Shell>
